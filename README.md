@@ -8,5 +8,26 @@ Monitor the temperature and humidity through the *dht22 sensor* and raspberry pi
 
 If you wish to monitor other device (which is not a raspberry pi) using the TIG stack, or monitor the temperature and humidity without using vcgencmd, you can use the following branches: `telemetry` and `dht22`, respectively.
 
+Further description can be found in my [Medium post]().
+
+## Getting Started
+
+Clone the repo
+
+```bash
+git clone https://github.com/razielar/raspberrypi_dht22_vcgencmd_tig_docker.git
+```
+
+You must change the environment variables placed in `.env`, replace all **<ADD_YOUR_DATA>** with your desired variables
+
+```bash
+├── telegraf/
+├── .env         <---
+├── docker-compose.yml
+├── entrypoint.sh
+└── ...
+```
+
+
 ## Contributing
 Contributions are always welcome! 
