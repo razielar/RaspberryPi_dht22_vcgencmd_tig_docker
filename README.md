@@ -6,6 +6,7 @@
 
 1. [Description](#ds)
 2. [Getting Started](#gs)
+    [DHT22](#dht22)
 3. [Contributing](#contributions)
 4. [Appendix](#app)
 
@@ -40,6 +41,8 @@ docker-compose up --build -d
 ```
 
 ### DHT22
+
+
 
 <div align="center">
 <img src="https://github.com/razielar/raspberrypi_dht22_vcgencmd_tig_docker/blob/main/img/dht22_connections.png" alt="logo"></img>
