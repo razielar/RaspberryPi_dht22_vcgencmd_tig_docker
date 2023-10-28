@@ -42,7 +42,7 @@ docker-compose up --build -d
 
 ### <a id='dht22'></a> DHT22
 
-To campture temperature and humidity readings from the Raspberry Pi, we need to connect the DHT22 sensor (with 3 pins) to the Pi, as shown in the following image:
+To capture temperature and humidity readings from the Raspberry Pi, we need to connect the DHT22 sensor (with 3 pins) to the Pi, as shown in the following image:
 
 <div align="center">
 <img src="https://github.com/razielar/raspberrypi_dht22_vcgencmd_tig_docker/blob/main/img/dht22_connections.png" alt="logo"></img>
@@ -60,3 +60,5 @@ Contributions are always welcome!
 ## <a id='app'></a> 4) Appendix
 
 If you wish to monitor other device (which is not a raspberry pi) using the TIG stack, or monitor the temperature and humidity without using vcgencmd, you can use the following branches: `telemetry` and `dht22`, respectively.
+
+For this project, we are using the Raspberry Pi 4 Model B (`arm64`) 8 Gb RAM.
