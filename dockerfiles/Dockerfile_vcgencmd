@@ -1,0 +1,7 @@
+FROM debian:stretch
+
+WORKDIR /vcgencmd
+
+COPY vcgencmd/ .
+RUN chmod u+x ./*.sh
+ENTRYPOINT [ "/bin/bash", "vcgencmd_monitoring.sh"]
