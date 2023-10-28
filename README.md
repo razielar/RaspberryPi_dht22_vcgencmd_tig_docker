@@ -61,7 +61,7 @@ By default, the username and password for Grafana are `admin` for both cases.
 
 When you connect, Grafana with Influxdb you need to consider two things:
 
-* Query language: `Flux` (optional) but the Grafana dashboards () uses Flux.
+* Query language: `Flux` (optional) but the Grafana dashboards (`grafana_dashboards/`) uses Flux.
 * HTTP-URL: `http://influxdb:8086` defined within the `.env` file.
 
 Grafana Dashboard for DHT22 sensor:
