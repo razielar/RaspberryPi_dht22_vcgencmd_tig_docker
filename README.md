@@ -12,9 +12,9 @@
 
 ## <a id='ds'></a> 1) Description
 
-Monitor the temperature and humidity through the *dht22 sensor* and raspberry pi, using the TIG stack (Telegraf, Influxdb, Grafana) all with docker and docker-compose. Additionally, monitor telemetry data, and custom raspberry pi data using the stdout of `vcgencmd`. 
+Monitor the temperature and humidity through the *dht22 sensor* and Raspberry pi, using the TIG stack (Telegraf, Influxdb, Grafana) all with docker and docker-compose. Additionally, monitor telemetry data, and custom raspberry pi data using the stdout of `vcgencmd`. 
 
-Further description can be found in my [Medium post]().
+Further description can be found on my [Medium post]().
 
 ## <a id='gs'></a> 2) Getting Started
 
@@ -42,7 +42,7 @@ docker-compose up --build -d
 
 ### <a id='dht22'></a> DHT22
 
-To compture temperature and humidity readings from the Raspberry Pi, we need to connect the DHT22 sensor (with 3 pins) to the Pi, as shown in the following image:
+To campture temperature and humidity readings from the Raspberry Pi, we need to connect the DHT22 sensor (with 3 pins) to the Pi, as shown in the following image:
 
 <div align="center">
 <img src="https://github.com/razielar/raspberrypi_dht22_vcgencmd_tig_docker/blob/main/img/dht22_connections.png" alt="logo"></img>
