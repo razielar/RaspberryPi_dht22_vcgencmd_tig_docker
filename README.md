@@ -30,7 +30,9 @@ You must change the environment variables placed in `.env`, replace all **<ADD_Y
 
 ### DHT22
 
-
+<div align="center">
+<img src="https://github.com/razielar/raspberrypi_dht22_vcgencmd_tig_docker/blob/main/img/dht22_connections.png" alt="logo"></img>
+</div>
 
 ## Contributing
 Contributions are always welcome! 
