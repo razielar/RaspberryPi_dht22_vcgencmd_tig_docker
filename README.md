@@ -40,13 +40,19 @@ Start the service
 docker-compose up --build -d
 ```
 
-### DHT22
+### <a id='dht22'></a> DHT22
 
-
+To compture temperature and humidity readings from the Raspberry Pi, we need to connect the DHT22 sensor (with 3 pints) to the Pi, as shown in the following image:
 
 <div align="center">
 <img src="https://github.com/razielar/raspberrypi_dht22_vcgencmd_tig_docker/blob/main/img/dht22_connections.png" alt="logo"></img>
 </div>
+
+If you want to use the GPIO 4 of the Raspberry Pi, you will need to change the following:
+
+```python
+dhtDevice = adafruit_dht.DHT22(board.D2, use_pulseio=False) # from board.D2 to board.D4
+```
 
 ## <a id='contributions'></a> 3) Contributing
 Contributions are always welcome! 
