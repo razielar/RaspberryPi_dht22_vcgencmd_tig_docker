@@ -1,3 +1,5 @@
-# RaspberryPi: dht22 & vcgencmd using TIG and Docker
+
+
+# RaspberryPi: dht22 and vcgencmd using the TIG stack and Docker
 
 
