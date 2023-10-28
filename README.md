@@ -22,7 +22,7 @@ Further description can be found on my [Medium post]().
 Clone the repo
 
 ```bash
-git clone https://github.com/razielar/raspberrypi_dht22_vcgencmd_tig.git
+git clone https://github.com/razielar/raspberrypi_dht22_tig.git
 ```
 
 You must change the environment variables placed in `.env`, replace all **<ADD_YOUR_DATA>** with your desired variables
