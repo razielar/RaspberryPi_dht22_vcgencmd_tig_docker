@@ -21,12 +21,15 @@ git clone https://github.com/razielar/raspberrypi_dht22_vcgencmd_tig_docker.git
 You must change the environment variables placed in `.env`, replace all **<ADD_YOUR_DATA>** with your desired variables
 
 ```bash
-├── telegraf/
+├── vcgencmd/
 ├── .env         <---
-├── docker-compose.yml
-├── entrypoint.sh
+├── .gitignore
+├── LICENSE
 └── ...
 ```
+
+### DHT22
+
 
 
 ## Contributing
