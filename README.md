@@ -6,7 +6,7 @@
 
 1. [Description](#ds)
 2. [Getting Started](#gs)
-    [DHT22](#dht22)
+    1. [DHT22](#dht22)
 3. [Contributing](#contributions)
 4. [Appendix](#app)
 
