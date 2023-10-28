@@ -7,6 +7,7 @@
 1. [Description](#ds)
 2. [Getting Started](#gs)
     1. [DHT22](#dht22)
+    2. [Grafana](#grafana)
 3. [Contributing](#contributions)
 4. [Appendix](#app)
 
@@ -53,6 +54,28 @@ If you want to use the GPIO 4 of the Raspberry Pi, you will need to modify the s
 ```python
 dhtDevice = adafruit_dht.DHT22(board.D2, use_pulseio=False) # from board.D2 to board.D4
 ```
+
+### <a id='grafana'></a> Grafana
+
+By default, the username and password for Grafana are `admin` for both cases. 
+
+When you connect, Grafana with Influxdb you need to consider two things:
+
+* Query language: `Flux` (optional) but the Grafana dashboards () uses Flux.
+* HTTP-URL: `http://influxdb:8086` defined within the `.env` file.
+
+Grafana Dashboard for DHT22 sensor:
+
+<div align="center">
+<img src="https://github.com/razielar/raspberrypi_dht22_vcgencmd_tig/blob/main/img/graphana_dashboard_2.png" alt="logo"></img>
+</div>
+
+Grafana Dashboard for Raspberry Pi Telemetry:
+
+<div align="center">
+<img src="https://github.com/razielar/raspberrypi_dht22_vcgencmd_tig/blob/main/img/graphana_dashboard_1.png" alt="logo"></img>
+</div>
+
 
 ## <a id='contributions'></a> 3) Contributing
 Contributions are always welcome! 
