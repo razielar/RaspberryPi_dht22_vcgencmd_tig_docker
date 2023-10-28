@@ -5,3 +5,5 @@
 # RaspberryPi: dht22, vcgencmd, TIG stack, and Docker
 
 
+## Contributing
+Contributions are always welcome! 
