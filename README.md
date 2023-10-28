@@ -42,7 +42,7 @@ docker-compose up --build -d
 
 ### <a id='dht22'></a> DHT22
 
-To capture temperature and humidity readings from the Raspberry Pi, we need to connect the DHT22 sensor (with 3 pins) to the Pi, as shown in the following image:
+To capture temperature (by default Celsius, but you can change it on the `.env` file) and humidity readings from the Raspberry Pi, we need to connect the DHT22 sensor (with 3 pins) to the Pi, as shown in the following image:
 
 <div align="center">
 <img src="https://github.com/razielar/raspberrypi_dht22_vcgencmd_tig_docker/blob/main/img/dht22_connections.png" alt="logo"></img>

@@ -20,6 +20,7 @@ ORG = os.environ['DOCKER_INFLUXDB_INIT_ORG']
 BUCKET = os.environ['DOCKER_INFLUXDB_INIT_BUCKET']
 DELAY = os.environ["DHT_VCGENCM_INTERVAL"]
 VCGENCMD_DATA = os.environ["VCGENCMD_DATA"]
+TEMPERATURE_UNIT = os.environ["TEMPERATURE_UNIT"]
 
 def _log_influxdb(url: str, token: str, org: str, bucket: str, sensor_type: str, values: List[float]) -> None:
     """
@@ -61,8 +62,11 @@ def main(delay: float, condition: bool=True) -> None:
     while condition:
         try:
             _vcgencm(volume_path= VCGENCMD_DATA)
-            temperature = dhtDevice.temperature
             humidity = dhtDevice.humidity
+            if TEMPERATURE_UNIT == "Celsius":
+                temperature = dhtDevice.temperature
+            elif TEMPERATURE_UNIT == "Fahrenheit":
+                temperature = dhtDevice.temperature * (9 / 5) + 32
             _log_influxdb(url=URL, token=TOKEN, org=ORG, bucket=BUCKET, sensor_type="dht22", values=[temperature, humidity])
         except RuntimeError as error:
             time.sleep(delay)
