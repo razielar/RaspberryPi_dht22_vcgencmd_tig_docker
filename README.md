@@ -10,7 +10,10 @@ If you wish to monitor other device (which is not a raspberry pi) using the TIG 
 
 Further description can be found in my [Medium post]().
 
-## Getting Started
+1. [Getting Started](#gs)
+2. [Contributing](#contributions)
+
+## <a id='gs'></a> 1) Getting Started
 
 Clone the repo
 
@@ -34,5 +37,5 @@ You must change the environment variables placed in `.env`, replace all **<ADD_Y
 <img src="https://github.com/razielar/raspberrypi_dht22_vcgencmd_tig_docker/blob/main/img/dht22_connections.png" alt="logo"></img>
 </div>
 
-## Contributing
+## <a id='contributions'></a> 2) Contributing
 Contributions are always welcome! 
