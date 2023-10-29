@@ -24,27 +24,10 @@ services:
     depends_on:
       - influxdb
   
-  vcgencmd:
-    container_name: vcgencmd
-    depends_on:
-      - telegraf
-    build:
-      context: .
-      dockerfile: dockerfiles/Dockerfile_vcgencmd
-    devices:
-      - /dev/vchiq
-    privileged: true
-    restart: on-failure:10
-    environment:
-      - LD_LIBRARY_PATH=/usr/lib
-    volumes:
-      - /usr:/usr
-      - vcgencmd-storage:/vcgencmd_data
-  
   dht:
     container_name: dht
     depends_on:
-      - vcgencmd
+      - telegraf
     build:
       context: .
       dockerfile: dockerfiles/Dockerfile_dht
@@ -54,8 +37,6 @@ services:
     restart: on-failure:10
     env_file:
       - .env
-    volumes:
-      - vcgencmd-storage:/vcgencmd_data
 
   grafana:
     image: grafana/grafana-oss:8.4.3
@@ -70,5 +51,4 @@ services:
 
 volumes:
   influxdb-storage:
-  vcgencmd-storage:
   grafana-storage:
