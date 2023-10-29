@@ -15,7 +15,7 @@
 
 Monitor the temperature and humidity through the *dht22 sensor* and Raspberry pi, using the TIG stack (Telegraf, Influxdb, Grafana) all with docker and docker-compose. Additionally, monitor telemetry data, and custom raspberry pi data using the stdout of `vcgencmd`. 
 
-Further description can be found on my [Medium post]().
+Further description can be found on my [Medium post](https://medium.com/@razielar/dockerizing-climate-telemetry-ac453891196d).
 
 ## <a id='gs'></a> 2) Getting Started
 
