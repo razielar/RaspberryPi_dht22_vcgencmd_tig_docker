@@ -9,11 +9,10 @@
     1. [DHT22](#dht22)
     2. [Grafana](#grafana)
 3. [Contributing](#contributions)
-4. [Appendix](#app)
 
 ## <a id='ds'></a> 1) Description
 
-Monitor the temperature and humidity through the *dht22 sensor* and Raspberry pi, using the TIG stack (Telegraf, Influxdb, Grafana) all with docker and docker-compose. Additionally, monitor telemetry data, and custom raspberry pi data using the stdout of `vcgencmd`. 
+Monitor the temperature and humidity through the *DHT22 sensor* and Raspberry pi, using the TIG stack (Telegraf, Influxdb, Grafana) all with Docker and Docker-compose. Additionally, monitor telemetry data, and custom Raspberry Pi data using the stdout of `vcgencmd`. 
 
 Further description can be found on my [Medium post](https://medium.com/@razielar/dockerizing-climate-telemetry-ac453891196d).
 
@@ -79,9 +78,3 @@ Grafana Dashboard for Raspberry Pi Telemetry:
 
 ## <a id='contributions'></a> 3) Contributing
 Contributions are always welcome! 
-
-## <a id='app'></a> 4) Appendix
-
-If you wish to monitor other device (which is not a raspberry pi) using the TIG stack, or monitor the temperature and humidity without using vcgencmd, you can use the following branches: `telemetry` and `dht22`, respectively.
-
-For this project, we are using the Raspberry Pi 4 Model B (`arm64`) 8 Gb RAM.
