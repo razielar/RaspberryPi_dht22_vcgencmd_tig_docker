@@ -1,0 +1,35 @@
+### 1) Temperature Gauge
+from(bucket: "iot")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "flat_iot")
+  |> filter(fn: (r) => r["_field"] == "temperature")
+  |> filter(fn: (r) => r["location"] == "living_room")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "mean")
+
+### 2) Humidity Gauge
+from(bucket: "iot")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "flat_iot")
+  |> filter(fn: (r) => r["_field"] == "humidity")
+  |> filter(fn: (r) => r["location"] == "living_room")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "mean")
+
+### 3) Temperature time-series
+from(bucket: "iot")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "flat_iot")
+  |> filter(fn: (r) => r["_field"] == "temperature")
+  |> filter(fn: (r) => r["location"] == "living_room")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "mean")
+
+### 4) Humidity time-series
+from(bucket: "iot")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "flat_iot")
+  |> filter(fn: (r) => r["_field"] == "humidity")
+  |> filter(fn: (r) => r["location"] == "living_room")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "mean")

@@ -333,13 +333,13 @@
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-30d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Living Room",
   "uid": "-SJXerMSz",
-  "version": 5,
+  "version": 10,
   "weekStart": ""
 }

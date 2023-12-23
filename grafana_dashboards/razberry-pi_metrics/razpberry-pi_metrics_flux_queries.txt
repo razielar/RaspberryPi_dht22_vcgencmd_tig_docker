@@ -1,0 +1,130 @@
+### 1) CPU Utilization gauge
+from(bucket: "iot")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "cpu")
+  |> filter(fn: (r) => r["cpu"] == "cpu-total")
+  |> filter(fn: (r) => r["_field"] == "usage_idle")
+  |> last()
+  |> map(fn: (r) => ({  _value: r._value * -1.0 + 100.0 }))
+
+### 2) Memory Utilization gauge
+from(bucket: "iot")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "mem")
+  |> filter(fn: (r) => r["_field"] == "used_percent")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "mean")
+
+### 3) SOC Temperature gauge
+from(bucket: "iot")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "vcgencm")
+  |> filter(fn: (r) => r["_field"] == "soc_temp")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "mean")
+
+### 4) SDA Disk Utilization gauge
+from(bucket: "iot")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "disk")
+  |> filter(fn: (r) => r["_field"] == "used_percent")
+  |> filter(fn: (r) => r["path"] == "/etc/hostname")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "mean")
+
+### 5) Processes stat
+from(bucket: "iot")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "processes")
+  |> filter(fn: (r) => r["_field"] == "total")
+  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)
+  |> keep(columns: ["_time", "_value"])
+
+### 6) Threads stat
+from(bucket: "iot")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "processes")
+  |> filter(fn: (r) => r["_field"] == "total_threads")
+  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)
+  |> keep(columns: ["_time", "_value"])
+
+### 7) Number of CPUs stat
+from(bucket: "iot")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "system")
+  |> filter(fn: (r) => r["_field"] == "n_cpus")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "mean")
+
+### 8) Uptime stat
+from(bucket: "iot")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "system")
+  |> filter(fn: (r) => r["_field"] == "uptime")
+  |> last()
+
+### 9) CPU clock stat
+from(bucket: "iot")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "vcgencm")
+  |> filter(fn: (r) => r["_field"] == "cpu_clock")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "mean")
+
+### 10) CPU voltage stat
+from(bucket: "iot")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "vcgencm")
+  |> filter(fn: (r) => r["_field"] == "cpu_voltage")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "mean")
+
+### 11) SOC Temperature time-series
+from(bucket: "iot")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "vcgencm")
+  |> filter(fn: (r) => r["_field"] == "soc_temp")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "mean")
+
+### 12) CPU Utilization time-series
+from(bucket: "iot")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["cpu"] == "cpu-total")
+  |> filter(fn: (r) => r["_measurement"] == "cpu")
+  |> filter(fn: (r) => r["_field"] == "usage_system")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "mean")
+
+### 13) Memory Utilization time-series
+from(bucket: "iot")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "mem")
+  |> filter(fn: (r) => r["_field"] == "used_percent")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "mean")
+
+### 14) Disk I/0 requests Graph (old)
+from(bucket: "iot")
+|> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+|> filter(fn: (r) => r["_measurement"] == "diskio" and (r["_field"] == "reads" or r["_field"] == "writes") and r["name"] == "sda")
+|> aggregateWindow(every: v.windowPeriod, fn: max, createEmpty: false)
+|> derivative(unit: 1s, nonNegative: true, columns: ["_value"], timeColumn: "_time")
+|> keep(columns: ["_time","_value","_field","name"])
+
+### 15) CPU clock time-series
+from(bucket: "iot")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "vcgencm")
+  |> filter(fn: (r) => r["_field"] == "cpu_clock")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "mean")
+
+### 16) Voltage time-series
+from(bucket: "iot")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "vcgencm")
+  |> filter(fn: (r) => r["_field"] == "cpu_voltage")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "mean")
+
