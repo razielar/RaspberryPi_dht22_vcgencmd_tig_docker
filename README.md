@@ -63,13 +63,13 @@ When you connect, Grafana with Influxdb you need to consider two things:
 * Query language: `Flux` (optional) but the Grafana dashboards (`grafana_dashboards/`) uses Flux.
 * HTTP-URL: `http://influxdb:8086` defined within the `.env` file.
 
-Grafana Dashboard for DHT22 sensor:
+Grafana Dashboard for **DHT22 sensor**:
 
 <div align="center">
 <img src="https://github.com/razielar/raspberrypi_dht22_vcgencmd_tig/blob/main/img/graphana_dashboard_2.png" alt="logo"></img>
 </div>
 
-Grafana Dashboard for Raspberry Pi Telemetry:
+Grafana Dashboard for **Raspberry Pi Telemetry**:
 
 <div align="center">
 <img src="https://github.com/razielar/raspberrypi_dht22_vcgencmd_tig/blob/main/img/graphana_dashboard_1.png" alt="logo"></img>
